@@ -19,6 +19,14 @@ try:
         print(result)
 except mysql.connector.Error as e:
     print(f"Connection error {e}")
-
-mycursor.close()
-mydb.close()
+finally:
+    try:
+        if mycursor:
+            mycursor.close()
+    except NameError:
+            pass
+    try:
+            if mydb and mydb.is_connected:
+                mydb.close()
+    except NameError:
+         pass
