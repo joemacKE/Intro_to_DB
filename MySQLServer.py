@@ -1,32 +1,27 @@
+#!/usr/bin/python3
 import mysql.connector
-try: 
-    mydb = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        password = "Vision2030$",
-        database = "alx_book_store"
 
-
+try:
+    # Connect to MySQL database
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="Vision2030$",
+        database="alx_book_store"
     )
 
-    mycursor = mydb.cursor()
+    cursor = conn.cursor()
+    cursor.execute("SHOW TABLES")
+    tables = cursor.fetchall()
 
-    mycursor.execute("SHOW TABLES")
-    #listing all tables in the database
-    results = mycursor.fetchall()
+    for (table,) in tables:
+        print(table)
 
-    for result in results:
-        print(result)
-except mysql.connector.Error as e:
-    print(f"Connection error {e}")
+except mysql.connector.Error as err:
+    print("Error:", err)
+
 finally:
-    try:
-        if mycursor:
-            mycursor.close()
-    except NameError:
-            pass
-    try:
-            if mydb and mydb.is_connected:
-                mydb.close()
-    except NameError:
-         pass
+    if 'cursor' in locals():
+        cursor.close()
+    if 'conn' in locals() and conn.is_connected():
+        conn.close()

@@ -4,7 +4,7 @@ try:
         host = "localhost",
         user = "root",
         password = "Vision2030$",
-        database = "alx_book_store"
+
 
     )
 
