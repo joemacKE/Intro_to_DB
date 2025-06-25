@@ -1,30 +1,3 @@
-import mysql.connector
-try: 
-    mydb = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        password = "Vision2030$",
-
-
-    )
-
-    mycursor = mydb.cursor()
-    mycursor.execute("SHOW TABLES")
-    results = mycursor.fetchall()
-
-    for result in results:
-        print(result)
-except mysql.connector.Error as e:
-    print(f"Connection error {e}")
-
-finally:
-    try:
-        if mycursor:
-            mycursor.close()
-    except NameError:
-            pass
-    try:
-            if mydb and mydb.is_connected:
-                mydb.close()
-    except NameError:
-         pass
+CREATE DATABASE alx_book_store;
+USE alx_book_store;
+SHOW TABLES;
