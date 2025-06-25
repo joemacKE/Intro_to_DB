@@ -1,16 +1,30 @@
-USE alx_book_store;
+import mysql.connector
+try: 
+    mydb = mysql.connector.connect(
+        host = "localhost",
+        user = "root",
+        password = "Vision2030$",
+        database = "alx_book_store"
 
--- Example table creation
-CREATE TABLE IF NOT EXISTS authors (
-    author_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
-);
+    )
 
-CREATE TABLE IF NOT EXISTS books (
-    book_id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(130),
-    author_id INT,
-    price DOUBLE,
-    publication_date DATE,
-    FOREIGN KEY (author_id) REFERENCES authors(author_id)
-);
+    mycursor = mydb.cursor()
+    mycursor.execute("SHOW TABLES")
+    results = mycursor.fetchall()
+
+    for result in results:
+        print(result)
+except mysql.connector.Error as e:
+    print(f"Connection error {e}")
+
+finally:
+    try:
+        if mycursor:
+            mycursor.close()
+    except NameError:
+            pass
+    try:
+            if mydb and mydb.is_connected:
+                mydb.close()
+    except NameError:
+         pass
