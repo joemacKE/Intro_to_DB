@@ -18,8 +18,5 @@ try:
 except mysql.connector.Error as e:
     print(f"Connection error {e}")
 
-
-
-
 mycursor.close()
 mydb.close()
