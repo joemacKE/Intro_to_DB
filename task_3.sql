@@ -10,7 +10,6 @@ try:
 
     mycursor = mydb.cursor()
     mycursor.execute("SHOW TABLES")
-    #listing all tables in the database
     results = mycursor.fetchall()
 
     for result in results:

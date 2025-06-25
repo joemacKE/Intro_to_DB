@@ -6,9 +6,11 @@ try:
         password = "Vision2030$",
         database = "alx_book_store"
 
+
     )
 
     mycursor = mydb.cursor()
+
     mycursor.execute("SHOW TABLES")
     #listing all tables in the database
     results = mycursor.fetchall()
