@@ -7,9 +7,9 @@ try:
 
     )
 except Exception as e:
-    print("Error! connection failed")
+    print(f"Error! connection failed {e}")
 mycursor = mydb.cursor()
-mycursor.execute("CREATE  DATABASE IF NOT EXISTS alx_book_store")
+mycursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
 print("Database 'alx_book_store' created succesfully!")
 
 mycursor.close()
