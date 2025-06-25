@@ -9,6 +9,7 @@ try:
     )
 
     mycursor = mydb.cursor()
+    mycursor.execute("USE DATABASE alx_book_store")
     mycursor.execute("SHOW TABLES")
     #listing all tables in the database
     results = mycursor.fetchall()
