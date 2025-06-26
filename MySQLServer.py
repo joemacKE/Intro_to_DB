@@ -11,7 +11,7 @@ try:
     )
 
     cursor = conn.cursor()
-    cursor.execute("SHOW TABLES")
+    cursor.execute("SELECT * FROM Books")
     tables = cursor.fetchall()
 
     for (table,) in tables:
